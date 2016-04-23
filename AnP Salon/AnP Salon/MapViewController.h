@@ -12,7 +12,10 @@
     IBOutlet UIWebView* webView;
 }
 @property UIWebView* webView;
-@property (weak, nonatomic) IBOutlet UIButton *reviewBtn;
-@property (weak, nonatomic) IBOutlet UITextField *reviewTxt;
+@property (weak, nonatomic) UIButton *cameraBtn;
+@property (weak, nonatomic) UIButton *reviewBtn;
+
+-(IBAction)ReviewClicked:(id)sender;
+-(IBAction)CameraClicked:(id)sender;
 
 @end

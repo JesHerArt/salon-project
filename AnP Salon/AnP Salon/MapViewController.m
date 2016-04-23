@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "ReviewViewController.h"
 @import GoogleMaps;
 
 @interface MapViewController ()
@@ -67,6 +68,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)ReviewClicked:(id)sender{
+    
+    //goes to review controller
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ReviewViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
+
+}
+
+-(IBAction)CameraClicked:(id)sender{
+    
+    //camera code goes here
 }
 
 @end

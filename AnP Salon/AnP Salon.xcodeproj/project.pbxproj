@@ -15,6 +15,7 @@
 		A94808241CAE33040024271F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A94808221CAE33040024271F /* LaunchScreen.storyboard */; };
 		A948082F1CAE33040024271F /* AnP_SalonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A948082E1CAE33040024271F /* AnP_SalonTests.m */; };
 		A948083A1CAE33040024271F /* AnP_SalonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A94808391CAE33040024271F /* AnP_SalonUITests.m */; };
+		BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */; };
 		BBCDC6151CAEF93E00494AEA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6141CAEF93E00494AEA /* MapViewController.m */; };
 		BBCDC6181CAEFAB100494AEA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6171CAEFAB100494AEA /* HomeViewController.m */; };
 		BBCDC61B1CAEFAC700494AEA /* ApptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC61A1CAEFAC700494AEA /* ApptViewController.m */; };
@@ -58,6 +59,8 @@
 		A94808351CAE33040024271F /* AnP SalonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AnP SalonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A94808391CAE33040024271F /* AnP_SalonUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnP_SalonUITests.m; sourceTree = "<group>"; };
 		A948083B1CAE33040024271F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB28561A1CCBE5D900F3F7A4 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		BBCDC6131CAEF93E00494AEA /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		BBCDC6141CAEF93E00494AEA /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		BBCDC6161CAEFAB100494AEA /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 				BBCDC6141CAEF93E00494AEA /* MapViewController.m */,
 				BBCED3511CCBDEAF00E6FCB1 /* CameraViewController.h */,
 				BBCED3521CCBDEAF00E6FCB1 /* CameraViewController.m */,
+				BB28561A1CCBE5D900F3F7A4 /* ReviewViewController.h */,
+				BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */,
 				A948081D1CAE33040024271F /* Main.storyboard */,
 				A94808201CAE33040024271F /* Assets.xcassets */,
 				A94808221CAE33040024271F /* LaunchScreen.storyboard */,
@@ -378,6 +383,7 @@
 				BBCDC6211CAEFC7600494AEA /* LoginViewController.m in Sources */,
 				BBCDC6181CAEFAB100494AEA /* HomeViewController.m in Sources */,
 				A94808131CAE33040024271F /* main.m in Sources */,
+				BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
