@@ -20,6 +20,7 @@
 		BBCDC61B1CAEFAC700494AEA /* ApptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC61A1CAEFAC700494AEA /* ApptViewController.m */; };
 		BBCDC61E1CAEFADA00494AEA /* ServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC61D1CAEFADA00494AEA /* ServicesViewController.m */; };
 		BBCDC6211CAEFC7600494AEA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6201CAEFC7600494AEA /* LoginViewController.m */; };
+		BBCED3531CCBDEAF00E6FCB1 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCED3521CCBDEAF00E6FCB1 /* CameraViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		BBCDC61D1CAEFADA00494AEA /* ServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesViewController.m; sourceTree = "<group>"; };
 		BBCDC61F1CAEFC7600494AEA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		BBCDC6201CAEFC7600494AEA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		BBCED3511CCBDEAF00E6FCB1 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		BBCED3521CCBDEAF00E6FCB1 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				BBCDC61D1CAEFADA00494AEA /* ServicesViewController.m */,
 				BBCDC6131CAEF93E00494AEA /* MapViewController.h */,
 				BBCDC6141CAEF93E00494AEA /* MapViewController.m */,
+				BBCED3511CCBDEAF00E6FCB1 /* CameraViewController.h */,
+				BBCED3521CCBDEAF00E6FCB1 /* CameraViewController.m */,
 				A948081D1CAE33040024271F /* Main.storyboard */,
 				A94808201CAE33040024271F /* Assets.xcassets */,
 				A94808221CAE33040024271F /* LaunchScreen.storyboard */,
@@ -366,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBCDC61E1CAEFADA00494AEA /* ServicesViewController.m in Sources */,
+				BBCED3531CCBDEAF00E6FCB1 /* CameraViewController.m in Sources */,
 				BBCDC61B1CAEFAC700494AEA /* ApptViewController.m in Sources */,
 				A94808161CAE33040024271F /* AppDelegate.m in Sources */,
 				BBCDC6151CAEF93E00494AEA /* MapViewController.m in Sources */,

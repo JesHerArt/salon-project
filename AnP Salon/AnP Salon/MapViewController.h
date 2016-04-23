@@ -12,5 +12,7 @@
     IBOutlet UIWebView* webView;
 }
 @property UIWebView* webView;
+@property (weak, nonatomic) IBOutlet UIButton *reviewBtn;
+@property (weak, nonatomic) IBOutlet UITextField *reviewTxt;
 
 @end
