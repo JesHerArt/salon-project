@@ -83,6 +83,10 @@
 -(IBAction)CameraClicked:(id)sender{
     
     //camera code goes here
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 @end

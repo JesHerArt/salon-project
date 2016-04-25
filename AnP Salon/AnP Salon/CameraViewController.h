@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate>
+@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
+-(IBAction)openCamera:(id)sender;
+-(IBAction)goBack:(id)sender;
 
 @end

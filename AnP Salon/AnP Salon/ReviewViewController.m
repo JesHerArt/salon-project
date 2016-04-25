@@ -13,7 +13,7 @@
 @end
 
 @implementation ReviewViewController
-
+@synthesize reviewTxt,cancelBtn,sendBtn;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -35,14 +35,18 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(IBAction)SendClicked:(id)sender{
+    
+    NSLog(@"ReviewUploaded to DB");
+    NSLog(@"%@",reviewTxt.text);
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
+    [vc setSelectedIndex:3];
+    
+    [self presentViewController:vc animated:YES completion:nil];
 }
-*/
+
+
 
 @end
