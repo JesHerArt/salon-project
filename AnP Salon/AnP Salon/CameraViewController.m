@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    imageView.image = [UIImage imageNamed:@"stockPhoto.gif"];
 }
 
 - (void)viewDidUnload
@@ -110,6 +112,20 @@
 
 - (void) doSomethingElse {
     NSLog(@"Camera Dismissed");
+    
+}
+
+-(IBAction)sharePic:(id)sender{
+    
+    //upload image to DB
+    
+    NSLog(@"Image sent to DB");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
+    [vc setSelectedIndex:3];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+    
     
 }
 

@@ -16,6 +16,7 @@
 		A948082F1CAE33040024271F /* AnP_SalonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A948082E1CAE33040024271F /* AnP_SalonTests.m */; };
 		A948083A1CAE33040024271F /* AnP_SalonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A94808391CAE33040024271F /* AnP_SalonUITests.m */; };
 		BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */; };
+		BB28706A1CCEBC1100CE8193 /* stockPhoto.gif in Resources */ = {isa = PBXBuildFile; fileRef = BB2870691CCEBC1100CE8193 /* stockPhoto.gif */; };
 		BBCDC6151CAEF93E00494AEA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6141CAEF93E00494AEA /* MapViewController.m */; };
 		BBCDC6181CAEFAB100494AEA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6171CAEFAB100494AEA /* HomeViewController.m */; };
 		BBCDC61B1CAEFAC700494AEA /* ApptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC61A1CAEFAC700494AEA /* ApptViewController.m */; };
@@ -61,6 +62,7 @@
 		A948083B1CAE33040024271F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB28561A1CCBE5D900F3F7A4 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		BB2870691CCEBC1100CE8193 /* stockPhoto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = stockPhoto.gif; sourceTree = "<group>"; };
 		BBCDC6131CAEF93E00494AEA /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		BBCDC6141CAEF93E00494AEA /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		BBCDC6161CAEFAB100494AEA /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		A94808101CAE33040024271F /* AnP Salon */ = {
 			isa = PBXGroup;
 			children = (
+				BB2870691CCEBC1100CE8193 /* stockPhoto.gif */,
 				A94808141CAE33040024271F /* AppDelegate.h */,
 				A94808151CAE33040024271F /* AppDelegate.m */,
 				BBCDC61F1CAEFC7600494AEA /* LoginViewController.h */,
@@ -300,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB28706A1CCEBC1100CE8193 /* stockPhoto.gif in Resources */,
 				A94808241CAE33040024271F /* LaunchScreen.storyboard in Resources */,
 				A94808211CAE33040024271F /* Assets.xcassets in Resources */,
 				A948081F1CAE33040024271F /* Main.storyboard in Resources */,

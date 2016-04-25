@@ -15,5 +15,6 @@
 
 -(IBAction)openCamera:(id)sender;
 -(IBAction)goBack:(id)sender;
+-(IBAction)sharePic:(id)sender;
 
 @end
