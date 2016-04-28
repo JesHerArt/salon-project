@@ -99,11 +99,6 @@
     // View the image on screen
     imageView.image = imageToSave;
     
-    //****save imageToSave into DB somehow*******
-    //****save imageToSave into DB somehow*******
-    //****save imageToSave into DB somehow*******
-    //****save imageToSave into DB somehow*******
-    
     
     
     // Tell controller to remove the picker from the view hierarchy and release object.
@@ -117,9 +112,15 @@
 
 -(IBAction)sharePic:(id)sender{
     
-    //upload image to DB
+    //****save imageToSave into DB somehow*******
+    //****save imageToSave into DB somehow*******
+    //****save imageToSave into DB somehow*******
+    //****save imageToSave into DB somehow*******
     
     NSLog(@"Image sent to DB");
+    
+    
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     [vc setSelectedIndex:3];
@@ -129,12 +130,13 @@
     
 }
 
-
+//open camera
 - (IBAction)openCamera:(id)sender{
     [self startCameraControllerFromViewController : self usingDelegate:self];
     
 }
 
+//return to map controller
 -(IBAction)goBack:(id)sender{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];

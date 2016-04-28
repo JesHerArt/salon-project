@@ -25,11 +25,11 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    
+    //pre loads business id for salon
     urlSalon = [[NSURL alloc]init];
     placeID = @"ChIJOQAP4-O42YgRJZ6sQpw5qNo";
     
-    
+    //makes api call with business id
     GMSPlacesClient *client = [GMSPlacesClient sharedClient];
     [client lookUpPlaceID:placeID callback:^(GMSPlace * place, NSError * error) {
         //name
@@ -47,13 +47,17 @@
         //formattedAddress
         NSLog(@"address: %@" , place.formattedAddress);
         
+        
+        //places location marker on map for business location
         GMSMarker *marker = [[GMSMarker alloc]init];
         marker.position = CLLocationCoordinate2DMake(25.761364, -80.337621);
+        //loads marker info from api call data
         marker.title = place.name;
         marker.snippet = place.formattedAddress;
         urlSalon = place.website;
         NSLog(@"URL : %@", urlSalon);
         
+        //loads view with business info from api data
         NSURLRequest *request = [NSURLRequest requestWithURL:urlSalon];
         [webView loadRequest:request];
         
@@ -79,7 +83,7 @@
 
 -(IBAction)CameraClicked:(id)sender{
     
-    //camera code goes here
+    //goes to camera controller
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CameraViewController"];

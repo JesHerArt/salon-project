@@ -35,6 +35,7 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
+//post review to DB
 -(IBAction)SendClicked:(id)sender{
     
     NSLog(@"ReviewUploaded to DB");
