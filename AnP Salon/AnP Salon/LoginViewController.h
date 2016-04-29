@@ -11,7 +11,12 @@
 @interface LoginViewController : UIViewController
 {
     UIButton* loginBtn;
+    __weak IBOutlet UIView *viewLoginFB;
+    
 }
+
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *email;
 
 -(IBAction)LoginClicked:(id)sender;
 
