@@ -7,6 +7,7 @@
 //
 
 #import "ApptViewController.h"
+#import "User.h"
 
 @interface ApptViewController ()
 

@@ -11,6 +11,7 @@
 @interface ReviewViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *reviewTxt;
+@property (weak, nonatomic) IBOutlet UISlider * slider;
 @property (weak, nonatomic) UIButton *sendBtn;
 @property (weak, nonatomic) UIButton *cancelBtn;
 

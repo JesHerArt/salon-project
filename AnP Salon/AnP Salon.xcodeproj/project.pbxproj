@@ -19,6 +19,7 @@
 		A948083A1CAE33040024271F /* AnP_SalonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A94808391CAE33040024271F /* AnP_SalonUITests.m */; };
 		BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */; };
 		BB28706A1CCEBC1100CE8193 /* stockPhoto.gif in Resources */ = {isa = PBXBuildFile; fileRef = BB2870691CCEBC1100CE8193 /* stockPhoto.gif */; };
+		BB7909C71CD3C283003AD8AB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7909C61CD3C283003AD8AB /* User.m */; };
 		BBCDC6151CAEF93E00494AEA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6141CAEF93E00494AEA /* MapViewController.m */; };
 		BBCDC6181CAEFAB100494AEA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6171CAEFAB100494AEA /* HomeViewController.m */; };
 		BBCDC61B1CAEFAC700494AEA /* ApptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC61A1CAEFAC700494AEA /* ApptViewController.m */; };
@@ -67,6 +68,8 @@
 		BB28561A1CCBE5D900F3F7A4 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		BB2870691CCEBC1100CE8193 /* stockPhoto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = stockPhoto.gif; sourceTree = "<group>"; };
+		BB7909C51CD3C283003AD8AB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		BB7909C61CD3C283003AD8AB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		BBCDC6131CAEF93E00494AEA /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		BBCDC6141CAEF93E00494AEA /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		BBCDC6161CAEFAB100494AEA /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				BBCED3521CCBDEAF00E6FCB1 /* CameraViewController.m */,
 				BB28561A1CCBE5D900F3F7A4 /* ReviewViewController.h */,
 				BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */,
+				BB7909C51CD3C283003AD8AB /* User.h */,
+				BB7909C61CD3C283003AD8AB /* User.m */,
 				A948081D1CAE33040024271F /* Main.storyboard */,
 				A94808201CAE33040024271F /* Assets.xcassets */,
 				A94808221CAE33040024271F /* LaunchScreen.storyboard */,
@@ -387,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB7909C71CD3C283003AD8AB /* User.m in Sources */,
 				BBCDC61E1CAEFADA00494AEA /* ServicesViewController.m in Sources */,
 				BBCED3531CCBDEAF00E6FCB1 /* CameraViewController.m in Sources */,
 				BBCDC61B1CAEFAC700494AEA /* ApptViewController.m in Sources */,

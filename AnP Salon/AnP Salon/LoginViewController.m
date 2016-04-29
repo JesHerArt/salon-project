@@ -11,12 +11,18 @@
 #import <FBSDKCoreKit/FBSDKAccessToken.h>
 #import <FBSDKCoreKit/FBSDKProfile.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "User.h"
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
+{
+    User *user;
+    UITabBarController *vc;
+    UIStoryboard *storyboard;
+}
 
 @synthesize name, email;
 
@@ -28,7 +34,12 @@
     loginButton.readPermissions =
     @[@"public_profile", @"email"];
     
+    storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
+    
     [viewLoginFB addSubview:loginButton];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,53 +47,73 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)LoginClicked:(id)sender{
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
-    
+-(void)viewWillAppear:(BOOL)animated{
     
     
     [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     
-//    if(FBSDKAccessToken.currentAccessToken != nil) {
-//        NSLog((@"%@", FBSDKAccessToken.currentAccessToken.userID)); //works
-//    }
-    
-    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"id,name,email" forKey:@"fields"];
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
                                   id result, NSError *error) {
-//         aHandler(result, error);
+         //         aHandler(result, error);
          NSLog(@"%@", result);
          name = result[@"name"];
          email = result[@"email"];
          NSLog(@"name: %@", name);
          NSLog(@"email: %@", email);
+         
+         user = [User userData];
+         
+         [user setName:name];
+         [user setEmail:email];
+         
      }];
     
-    [self presentViewController:vc animated:YES completion:nil];
+    [self login];
+    
 }
 
--(void)loginButtonClicked
-{
-//    FBSDKProfile *profile = [[FBSDKProfile alloc] init];
+-(void)login{
+    if(!user.name){
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+    
+}
+
+-(IBAction)LoginClicked:(id)sender{
+    
+//    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
 //    
+////    if(FBSDKAccessToken.currentAccessToken != nil) {
+////        NSLog((@"%@", FBSDKAccessToken.currentAccessToken.userID)); //works
+////    }
 //    
+//    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+//    [parameters setValue:@"id,name,email" forKey:@"fields"];
+//    
+//    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters]
+//     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+//                                  id result, NSError *error) {
+////         aHandler(result, error);
+//         NSLog(@"%@", result);
+//         name = result[@"name"];
+//         email = result[@"email"];
+//         NSLog(@"name: %@", name);
+//         NSLog(@"email: %@", email);
+//         
+//          user = [User userData];
+//        
+//         [user setName:name];
+//         [user setEmail:email];
+//         [self presentViewController:vc animated:YES completion:nil];
+//         
+//     }];
     
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

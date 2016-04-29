@@ -7,14 +7,18 @@
 //
 
 #import "CameraViewController.h"
+#import "User.h"
 
 @interface CameraViewController ()
 
 @end
 
 @implementation CameraViewController
+{
+    User *user;
+}
 
-@synthesize imageView;
+@synthesize imageView, image, blobStr;
 
 
 - (void)viewDidLoad {
@@ -97,8 +101,10 @@
     UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
     
     // View the image on screen
-    imageView.image = imageToSave;
-    
+    //imageView.image = imageToSave;
+    image = imageToSave;
+    imageView.image = image;
+
     
     
     // Tell controller to remove the picker from the view hierarchy and release object.
@@ -112,13 +118,17 @@
 
 -(IBAction)sharePic:(id)sender{
     
-    //****save imageToSave into DB somehow*******
-    //****save imageToSave into DB somehow*******
-    //****save imageToSave into DB somehow*******
-    //****save imageToSave into DB somehow*******
+    //****save image into DB *******
+    
+    blobStr = [self encodeToBase64String:image];
     
     NSLog(@"Image sent to DB");
+    //NSLog(@"Image Blob: %@", blobStr);
+    user = [User userData];
+    user.imgStr = blobStr;
     
+    NSLog(@"user name: %@", user.name);
+    NSLog(@"user email: %@", user.email);
     
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -144,6 +154,19 @@
     
     [self presentViewController:vc animated:YES completion:nil];
     
+}
+
+//Encode base64
+
+- (NSString *)encodeToBase64String:(UIImage *)img {
+    
+    return [UIImageJPEGRepresentation(img,0.0) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
+
+//Decode
+- (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
+    NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return [UIImage imageWithData:data];
 }
 
 

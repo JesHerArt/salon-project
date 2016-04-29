@@ -7,16 +7,27 @@
 //
 
 #import "HomeViewController.h"
+#import "User.h"
 
 @interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController
+{
+    User *user;
+}
+@synthesize lbl;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    //Alain
+    user = [User userData];
+    NSLog(@"User name: %@",user.name);
+    NSString *welcome = [NSString stringWithFormat:@"Welcome %@ we hope you are having a beautiful day!", user.name];
+    lbl.text = welcome;
 }
 
 - (void)didReceiveMemoryWarning {

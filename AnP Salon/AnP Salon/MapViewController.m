@@ -8,12 +8,14 @@
 
 #import "MapViewController.h"
 #import "ReviewViewController.h"
+#import "User.h"
 @import GoogleMaps;
 
 @interface MapViewController ()
 {
     NSString *placeID;
     NSURL* urlSalon;
+    User * user;
 }
 @end
 
@@ -34,14 +36,6 @@
     [client lookUpPlaceID:placeID callback:^(GMSPlace * place, NSError * error) {
         //name
         NSLog(@"place name: %@" , place.name);
-        //openNowStatus
-        NSLog(@"open now: %ld" , (long)place.openNowStatus);
-        if(place.openNowStatus == 1){
-            NSLog(@"Open/Closed: Open");
-        }
-        else if (place.openNowStatus == 2){
-            NSLog(@"Open/Closed: Closed");
-        }
         //phoneNumber
         NSLog(@"phone number: %@" , place.phoneNumber);
         //formattedAddress
@@ -63,6 +57,17 @@
         
         
     }];
+    
+    user = [User userData];
+    
+    NSLog(@"*****************");
+    NSLog(@"*****************");
+    NSLog(@"User name: %@", user.name);
+    NSLog(@"User email: %@", user.email);
+    NSLog(@"User review: %@", user.review);
+    NSLog(@"User rating: %@", user.rating);
+    NSLog(@"*****************");
+    NSLog(@"*****************");
     
 }
 
