@@ -18,10 +18,35 @@
 {
     User *user;
 }
-@synthesize reviewTxt,cancelBtn,sendBtn, slider;
+@synthesize reviewTxt,cancelBtn,sendBtn, slider, txtView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/salon/reviews"];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        NSLog(@"requestReply: %@", requestReply);
+        
+        
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        NSLog(@"JSON Dict: %@", jsonDict);
+        
+        
+        
+        
+        
+        
+    }] resume];
+    
 }
 
 - (void)didReceiveMemoryWarning {
