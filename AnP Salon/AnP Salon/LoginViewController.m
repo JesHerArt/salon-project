@@ -37,7 +37,13 @@
     storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     
-    [viewLoginFB addSubview:loginButton];
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    [loginManager logOut];
+    
+         [viewLoginFB addSubview:loginButton];
+    
+    
+   NSLog(@"Token load: %@", [FBSDKAccessToken currentAccessToken]);
 
     
 }
@@ -47,8 +53,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 -(void)viewWillAppear:(BOOL)animated{
-    
+
     
     [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     
@@ -70,18 +78,24 @@
          [user setName:name];
          [user setEmail:email];
          
+         
      }];
+     NSLog(@"Token appear: %@", [FBSDKAccessToken currentAccessToken]);
     
     [self login];
     
 }
 
 -(void)login{
+
+    
     if(!user.name){
         [self presentViewController:vc animated:YES completion:nil];
     }
-    
 }
+
+
+
 
 -(IBAction)LoginClicked:(id)sender{
     

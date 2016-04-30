@@ -10,7 +10,7 @@
 
 @implementation User
 
-@synthesize name,email,imgStr,review, rating;
+@synthesize name,email,imgStr,review, rating, appointments;
 
 
 +(instancetype)userData{

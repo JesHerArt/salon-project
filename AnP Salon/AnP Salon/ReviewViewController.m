@@ -45,8 +45,9 @@
     // add review to user object
     user = [User userData];
     user.review = reviewTxt.text;
-    NSString* formattedNumber = [NSString stringWithFormat:@"%.01f", slider.value];
-    user.rating = formattedNumber;
+    //NSString* formattedNumber = [NSString stringWithFormat:@"%.01f", slider.value];
+    //user.rating = (int)formattedNumber;
+    user.rating = (int)slider.value;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     [vc setSelectedIndex:3];

@@ -65,7 +65,7 @@
     NSLog(@"User name: %@", user.name);
     NSLog(@"User email: %@", user.email);
     NSLog(@"User review: %@", user.review);
-    NSLog(@"User rating: %@", user.rating);
+    NSLog(@"User rating: %i", user.rating);
     NSLog(@"*****************");
     NSLog(@"*****************");
     

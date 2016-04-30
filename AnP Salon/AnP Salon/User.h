@@ -16,7 +16,8 @@
 @property NSString *email;
 @property NSString *imgStr;
 @property NSString *review;
-@property NSString *rating;
+@property int rating;
+@property NSMutableArray * appointments;
 
 
 +(instancetype)userData;
