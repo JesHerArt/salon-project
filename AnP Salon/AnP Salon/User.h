@@ -12,12 +12,12 @@
 
 @interface User : NSObject
 
-@property int uId;
+@property NSNumber * uId;
 @property NSString *name;
 @property NSString *email;
 @property NSString *imgStr;
 @property NSString *review;
-@property int rating;
+@property NSNumber *rating;
 @property NSMutableArray * appointments;
 
 

@@ -8,6 +8,7 @@
 
 #import "ReviewViewController.h"
 #import "User.h"
+#import "JSONSerializable.h"
 
 @interface ReviewViewController ()
 
@@ -45,42 +46,55 @@
     // add review to user object
     user = [User userData];
     user.review = reviewTxt.text;
-    //NSString* formattedNumber = [NSString stringWithFormat:@"%.01f", slider.value];
-    //user.rating = (int)formattedNumber;
-    user.rating = (int)slider.value;
+    user.rating = [NSNumber numberWithFloat:slider.value];
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     [vc setSelectedIndex:3];
     
-    //test id
-    user.uId = 9;
-    
-    NSString *reviewDataStr = [NSString stringWithFormat:@"[{ \"user_id\":%i\,\"comment\":\"%@\" ,\"rating\":%i}]", user.uId, user.review, user.rating];
-    
-    
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-    
-    NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/users/user"];
-    
-    NSData * strData = [reviewDataStr dataUsingEncoding:NSUTF8StringEncoding];
-    //NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:[reviewDataStr dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
-    NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:strData options:0 error:NULL];
+    //test ID
+    //user.uId = [NSNumber numberWithInt:9];
 
-    NSLog(@"%@", reviewDataStr);
-    NSLog(@"%@", jsonObject);
     
+    NSDictionary *dict = @{@"user_id" : user.uId ,
+                           @"comment" : user.review ,
+                           @"rating"  : user.rating};
+                           
     
-//    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:url];
-//    [urlRequest setHTTPMethod:@"POST"];
-//    [urlRequest setHTTPBody:[reviewDataString dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
 //    
     
+//    
+    
+    //NSData * strData = [reviewDataStr dataUsingEncoding:NSUTF8StringEncoding];
+    //NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:[reviewDataStr dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
+    //NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:strData options:0 error:NULL];
+
+    NSData * jsonR = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSLog(@"%@", dict);
+    NSLog(@"%@", jsonR);
+    
+    NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/salon/review"];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonR];
     
     
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
     
-    
-    
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+//        NSLog(@"requestReply: %@", requestReply);
+//    }] resume];
+//    
     [self presentViewController:vc animated:YES completion:nil];
 }
 

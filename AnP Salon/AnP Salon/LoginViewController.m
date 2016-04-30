@@ -90,6 +90,7 @@
 
     
     if(!user.name){
+                
         [self presentViewController:vc animated:YES completion:nil];
     }
 }

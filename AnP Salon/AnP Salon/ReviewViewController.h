@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSONSerializable.h"
 
-@interface ReviewViewController : UIViewController
+@interface ReviewViewController : UIViewController<JSONSerializable>
 
 @property (weak, nonatomic) IBOutlet UITextField *reviewTxt;
 @property (weak, nonatomic) IBOutlet UISlider * slider;
