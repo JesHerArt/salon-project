@@ -52,6 +52,35 @@
     UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     [vc setSelectedIndex:3];
     
+    //test id
+    user.uId = 9;
+    
+    NSString *reviewDataStr = [NSString stringWithFormat:@"[{ \"user_id\":%i\,\"comment\":\"%@\" ,\"rating\":%i}]", user.uId, user.review, user.rating];
+    
+    
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    
+    NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/users/user"];
+    
+    NSData * strData = [reviewDataStr dataUsingEncoding:NSUTF8StringEncoding];
+    //NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:[reviewDataStr dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
+    NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:strData options:0 error:NULL];
+
+    NSLog(@"%@", reviewDataStr);
+    NSLog(@"%@", jsonObject);
+    
+    
+//    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:url];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:[reviewDataString dataUsingEncoding:NSUTF8StringEncoding]];
+//    
+    
+    
+    
+    
+    
+    
     [self presentViewController:vc animated:YES completion:nil];
 }
 

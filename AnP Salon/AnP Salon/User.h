@@ -12,6 +12,7 @@
 
 @interface User : NSObject
 
+@property int uId;
 @property NSString *name;
 @property NSString *email;
 @property NSString *imgStr;
