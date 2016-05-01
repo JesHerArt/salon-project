@@ -39,6 +39,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    
+    NSManagedObjectContext* context = [self managedObjectContext];
+    NSManagedObject* User = [NSEntityDescription insertNewObjectForEntityForName:@"User"inManagedObjectContext:context];
+    [User setValue: user.email  forKey: @"email"];
+    [User setValue: user.name   forKey: @"name"];
+    [User setValue: user.uId    forKey: @"uId"];
+    
+    NSError* error;
+    if(![context save:&error]) {
+        NSLog(@"Save Failed");
+    }
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext: context];
+    [request setEntity:entity];
+    NSArray* fetchedObjects = [context executeFetchRequest:request error: &error];
+    NSLog(@"here");
+    
     // Add any custom logic here.
     [GMSServices provideAPIKey:@"AIzaSyDPEBON9xkaQWrrI8TT2PTgdXEKmFwMBJE"];
     return YES;
