@@ -10,13 +10,13 @@
 
 @interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-    NSArray *listData;
+    NSMutableArray *listData;
     NSDictionary *jsonSpecialsDict;
 }
 
 
 @property IBOutlet UILabel *lbl;
 @property IBOutlet UITableView * tableView;
-@property (nonatomic, retain) NSArray *listData;
+@property (nonatomic, retain) NSMutableArray *listData;
 
 @end

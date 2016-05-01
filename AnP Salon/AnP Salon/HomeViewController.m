@@ -16,14 +16,19 @@
 @implementation HomeViewController
 {
     User *user;
+    NSMutableArray * arr;
+    NSString *str1;
 }
 @synthesize lbl,tableView, listData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    tableView.dataSource = self;
     tableView.delegate = self;
+    tableView.dataSource = self;
+    
+    arr = [[NSMutableArray alloc] initWithObjects:@"Sleepy", @"Sneezy", @"Bashful", @"Happy", nil];
+    
     // Do any additional setup after loading the view.
     //Alain
     user = [User userData];
@@ -77,20 +82,42 @@
     NSURLSession *session1 = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session1 dataTaskWithRequest:request1 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        NSLog(@"requestReply2: %@", requestReply);
+        //NSLog(@"requestReply2: %@", requestReply);
         
         jsonSpecialsDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        NSLog(@"JSON Dict Specials: %@", jsonSpecialsDict);
+        //NSLog(@"JSON Dict Specials: %@", jsonSpecialsDict);
         //NSLog(@"JSON Dict Specials count: %lu", [[jsonSpecialsDict[@"specials"] allObjects] count]);
         
-        listData = [jsonSpecialsDict objectForKey:@"specials"];
+        self.listData = [jsonSpecialsDict objectForKey:@"specials"];
         
+//        for ( NSDictionary *eachEntry in jsonSpecialsDict){
+//            NSString *name = [eachEntry objectForKey:@"name"];
+//            [self.listData addObject:name];
+//            NSLog(@"name: %@", name);
+//        }
         
+//        for ( id key in jsonSpecialsDict[@"specials"]) {
+//            [self.listData addObject:[key objectForKey:@"name"]];
+//        }
+        
+//        NSLog(@"list Data from dict: %lu",self.listData.count);
+//        
+//        NSLog(@"list Data from dict: %@",self.listData[1][@"name"]);
+        str1 = self.listData[1][@"name"];
+        NSLog(@"String inside block: %@",str1);
+        [arr addObject:@"Jess"];
+//        arr = [[NSMutableArray alloc] initWithObjects:str1, nil];
+//        arr = [[NSMutableArray alloc] init];
+//        [arr addObject:str1];
+        
+//        NSLog(@"arrString: %@",arr);
+        
+    
     }] resume];
-
-    
-    
-    
+    NSLog(@"list Data from dict outside: %@",self.listData[1][@"name"]);
+    [arr addObject:@"Alain"];
+     NSLog(@"String outside block: %@",str1);
+    //[arr addObject:str1];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,47 +139,48 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     //return [[jsonSpecialsDict[@"specials"] allObjects] count];
-    
-    return listData.count;
+    NSLog(@"inside number of rows");
+    return (NSInteger)arr.count;
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
           cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"inside cell method");
     
     static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                              SimpleTableIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                  initWithStyle:UITableViewCellStyleDefault
                  reuseIdentifier:SimpleTableIdentifier];
     }
-//
-//    UIImage *image = [UIImage imageNamed:@"star.png"];
-//    cell.imageView.image = image;
-//    
-//    NSUInteger row = [indexPath row];
-//    cell.textLabel.text = [listData objectAtIndex:row];
+   
+    NSUInteger row = [indexPath row];
+    cell.textLabel.text = arr[row];
+    
+    
 //    cell.textLabel.font = [UIFont boldSystemFontOfSize:50];
     
-    NSDictionary *specialsDictionary = [listData objectAtIndex:indexPath.row];
-    cell.textLabel.text = [specialsDictionary objectForKey:@"name"];
+//    NSDictionary *specialsDictionary = [listData objectAtIndex:indexPath.row];
+//    cell.textLabel.text = [specialsDictionary objectForKey:@"name"];
 
-    
     return cell;
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView
-indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger row = [indexPath row];
-    return row;
-}
+//- (NSInteger)tableView:(UITableView *)tableView
+//indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"inside indentation level");
+//    NSUInteger row = [indexPath row];
+//    return row;
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSLog(@"inside number of sections");
     return 1;
 }
 
