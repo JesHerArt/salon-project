@@ -13,6 +13,8 @@
 @end
 
 @implementation ServicesViewController
+@synthesize tableView,listData;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,5 +35,46 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
+
+//TableView Methods***********************************
+
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"inside number of rows");
+    return (NSInteger)arr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)aTableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"inside cell method");
+    
+    static NSString *SimpleCellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:
+                             SimpleCellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:SimpleCellIdentifier];
+    }
+    
+    NSUInteger row = [indexPath row];
+    cell.textLabel.text = arr[row];
+    
+    
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:35];
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSLog(@"inside number of sections");
+    return 1;
+}
 
 @end

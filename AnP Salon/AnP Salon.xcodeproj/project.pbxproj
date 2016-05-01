@@ -17,6 +17,7 @@
 		A94808241CAE33040024271F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A94808221CAE33040024271F /* LaunchScreen.storyboard */; };
 		A948082F1CAE33040024271F /* AnP_SalonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A948082E1CAE33040024271F /* AnP_SalonTests.m */; };
 		A948083A1CAE33040024271F /* AnP_SalonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A94808391CAE33040024271F /* AnP_SalonUITests.m */; };
+		BB0D36331CD67077009B5053 /* weathermap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB0D36321CD67077009B5053 /* weathermap.jpg */; };
 		BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */; };
 		BB28706A1CCEBC1100CE8193 /* stockPhoto.gif in Resources */ = {isa = PBXBuildFile; fileRef = BB2870691CCEBC1100CE8193 /* stockPhoto.gif */; };
 		BB5B70A91CD519ED0092A155 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5B70A81CD519ED0092A155 /* CoreData.framework */; };
@@ -67,6 +68,7 @@
 		A94808351CAE33040024271F /* AnP SalonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AnP SalonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A94808391CAE33040024271F /* AnP_SalonUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnP_SalonUITests.m; sourceTree = "<group>"; };
 		A948083B1CAE33040024271F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB0D36321CD67077009B5053 /* weathermap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = weathermap.jpg; sourceTree = "<group>"; };
 		BB28561A1CCBE5D900F3F7A4 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		BB2870691CCEBC1100CE8193 /* stockPhoto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = stockPhoto.gif; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		A94808101CAE33040024271F /* AnP Salon */ = {
 			isa = PBXGroup;
 			children = (
+				BB0D36321CD67077009B5053 /* weathermap.jpg */,
 				BB2870691CCEBC1100CE8193 /* stockPhoto.gif */,
 				A94808141CAE33040024271F /* AppDelegate.h */,
 				A94808151CAE33040024271F /* AppDelegate.m */,
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB28706A1CCEBC1100CE8193 /* stockPhoto.gif in Resources */,
+				BB0D36331CD67077009B5053 /* weathermap.jpg in Resources */,
 				A94808241CAE33040024271F /* LaunchScreen.storyboard in Resources */,
 				A94808211CAE33040024271F /* Assets.xcassets in Resources */,
 				A948081F1CAE33040024271F /* Main.storyboard in Resources */,

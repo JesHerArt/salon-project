@@ -17,8 +17,12 @@
 @implementation ReviewViewController
 {
     User *user;
+    
+    
 }
-@synthesize reviewTxt,cancelBtn,sendBtn, slider, txtView;
+@synthesize reviewTxt,cancelBtn,sendBtn, slider, txtView, listData;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -33,23 +37,38 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        NSLog(@"requestReply: %@", requestReply);
-        
         
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        NSLog(@"JSON Dict: %@", jsonDict);
+       
+        self.listData = [jsonDict objectForKey:@"reviews"];
         
-        
-//        for(id key in myDict){
-//            
-//        }
-        
-        
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            for(int x=0; x<listData.count; x++){
+                NSString *newComment = [NSString stringWithFormat:@"%@  \rRating: %@ / 5 \rComment: %@\r\r", self.listData[x][@"date"], self.listData[x][@"rating"], self.listData[x][@"comment"] ];
+                txtView.text = [txtView.text stringByAppendingString: newComment ];
+            }
+        });
     }] resume];
     
 }
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+- (BOOL)textView:(UITextView *)textView
+shouldChangeTextInRange:(NSRange)range
+ replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"])
+    {
+        [textView resignFirstResponder];
+    }
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -87,21 +106,7 @@
                            @"comment" : user.review ,
                            @"rating"  : user.rating};
                            
-    
-//    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-//    
-    
-//    
-    
-    //NSData * strData = [reviewDataStr dataUsingEncoding:NSUTF8StringEncoding];
-    //NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:[reviewDataStr dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
-    //NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:strData options:0 error:NULL];
-
     NSData * jsonR = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
-    
-    NSLog(@"%@", dict);
-    NSLog(@"%@", jsonR);
     
     NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/salon/review"];
     
@@ -112,16 +117,9 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonR];
     
-    
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [connection start];
     
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-//    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-//        NSLog(@"requestReply: %@", requestReply);
-//    }] resume];
-//    
     [self presentViewController:vc animated:YES completion:nil];
 }
 

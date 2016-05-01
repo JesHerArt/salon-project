@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ServicesViewController : UIViewController
+@interface ServicesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate, UINavigationControllerDelegate>
+{
+    NSMutableArray *listData;
+    NSDictionary *jsonServicesDict;
+    
+}
+
+@property IBOutlet UITableView * tableView;
+@property (nonatomic, retain) NSMutableArray *listData;
 
 @end
+
+

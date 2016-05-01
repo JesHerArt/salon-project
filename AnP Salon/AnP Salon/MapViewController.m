@@ -34,14 +34,7 @@
     //makes api call with business id
     GMSPlacesClient *client = [GMSPlacesClient sharedClient];
     [client lookUpPlaceID:placeID callback:^(GMSPlace * place, NSError * error) {
-        //name
-        NSLog(@"place name: %@" , place.name);
-        //phoneNumber
-        NSLog(@"phone number: %@" , place.phoneNumber);
-        //formattedAddress
-        NSLog(@"address: %@" , place.formattedAddress);
-        
-        
+       
         //places location marker on map for business location
         GMSMarker *marker = [[GMSMarker alloc]init];
         marker.position = CLLocationCoordinate2DMake(25.761364, -80.337621);
@@ -49,7 +42,6 @@
         marker.title = place.name;
         marker.snippet = place.formattedAddress;
         urlSalon = place.website;
-        NSLog(@"URL : %@", urlSalon);
         
         //loads view with business info from api data
         NSURLRequest *request = [NSURLRequest requestWithURL:urlSalon];
@@ -59,16 +51,6 @@
     }];
     
     user = [User userData];
-    
-    NSLog(@"*****************");
-    NSLog(@"*****************");
-    NSLog(@"User name: %@", user.name);
-    NSLog(@"User email: %@", user.email);
-    NSLog(@"User review: %@", user.review);
-    NSLog(@"User rating: %@", user.rating);
-    NSLog(@"*****************");
-    NSLog(@"*****************");
-    
 }
 
 - (void)didReceiveMemoryWarning {

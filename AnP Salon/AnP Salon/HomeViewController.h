@@ -16,6 +16,7 @@
 
 
 @property IBOutlet UILabel *lbl;
+@property IBOutlet UIImage *weatherImg;
 @property IBOutlet UITableView * tableView;
 @property (nonatomic, retain) NSMutableArray *listData;
 

@@ -17,58 +17,58 @@
 {
     User *user;
     NSMutableArray * arr;
-    NSString *str1;
+    NSString *str1, *str2, *str3, *str4, *str5;
+    
 }
-@synthesize lbl,tableView, listData;
+@synthesize lbl,tableView, listData, weatherImg;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     tableView.delegate = self;
     tableView.dataSource = self;
+    arr = [[NSMutableArray alloc] initWithObjects:@"Week of MAY 1st - MAY 7th 2016", nil];
+    [self setArrayFromRequest2];
+    NSLog(@"Array after init: %@", arr);
     
-    arr = [[NSMutableArray alloc] initWithObjects:@"Sleepy", @"Sneezy", @"Bashful", @"Happy", nil];
     
-    // Do any additional setup after loading the view.
     //Alain
     user = [User userData];
-    NSLog(@"User name: %@",user.name);
+    //NSLog(@"User name: %@",user.name);
     NSString *welcome = [NSString stringWithFormat:@"Welcome %@ we hope you are having a beautiful day!", user.name];
     lbl.text = welcome;
     
-    
+    //Alain post to external DB name and email
     NSDictionary *dict = @{@"name" : user.name ,
                            @"email" : user.email };
-    
     NSData * jsonU = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
-    
-    
     NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/users/user"];
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:url];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonU];
-    
-   
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-            //NSLog(@"requestReply1: %@", requestReply);
-            
-            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             //NSLog(@"JSON Dict user: %@", jsonDict);
-            
-            user = [User userData];
-            user.uId = jsonDict[@"user_id"];
+    user = [User userData];
+    user.uId = jsonDict[@"user_id"];
             //NSLog(@"%@",user.uId);
-            
-        }] resume];
+    }] resume];
+    //post user to ext DB
     
-    
-    
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+-(void)setArrayFromRequest2{
     
     NSURL * url1 = [NSURL URLWithString:@"http://salonapi.jesherart.design/services/specials"];
     
@@ -78,106 +78,88 @@
     [request1 setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request1 setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    
     NSURLSession *session1 = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session1 dataTaskWithRequest:request1 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        //NSLog(@"requestReply2: %@", requestReply);
+        //NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        //NSLog(@"requestRepy string: : %@", requestReply);
         
         jsonSpecialsDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         //NSLog(@"JSON Dict Specials: %@", jsonSpecialsDict);
         //NSLog(@"JSON Dict Specials count: %lu", [[jsonSpecialsDict[@"specials"] allObjects] count]);
         
         self.listData = [jsonSpecialsDict objectForKey:@"specials"];
+
         
-//        for ( NSDictionary *eachEntry in jsonSpecialsDict){
-//            NSString *name = [eachEntry objectForKey:@"name"];
-//            [self.listData addObject:name];
-//            NSLog(@"name: %@", name);
-//        }
+        NSLog(@"list Data from list data array: %@",self.listData[1][@"name"]);
         
-//        for ( id key in jsonSpecialsDict[@"specials"]) {
-//            [self.listData addObject:[key objectForKey:@"name"]];
-//        }
+        str1 = [NSString stringWithFormat:@"%@                                            %@", self.listData[0][@"name"], self.listData[0][@"special_price"] ];
+        str2 = [NSString stringWithFormat:@"%@                                            %@", self.listData[1][@"name"], self.listData[1][@"special_price"] ];
+        str3 = [NSString stringWithFormat:@"%@                                            %@", self.listData[2][@"name"], self.listData[2][@"special_price"] ];
+        str4 = [NSString stringWithFormat:@"%@                          %@", self.listData[3][@"name"], self.listData[3][@"special_price"] ];
+        str5 = [NSString stringWithFormat:@"%@                             %@", self.listData[4][@"name"], self.listData[4][@"special_price"] ];
         
-//        NSLog(@"list Data from dict: %lu",self.listData.count);
-//        
-//        NSLog(@"list Data from dict: %@",self.listData[1][@"name"]);
-        str1 = self.listData[1][@"name"];
-        NSLog(@"String inside block: %@",str1);
-        [arr addObject:@"Jess"];
-//        arr = [[NSMutableArray alloc] initWithObjects:str1, nil];
-//        arr = [[NSMutableArray alloc] init];
-//        [arr addObject:str1];
         
-//        NSLog(@"arrString: %@",arr);
+        [arr addObject:str1];
+        [arr addObject:str2];
+        [arr addObject:str3];
+        [arr addObject:str4];
+        [arr addObject:str5];
         
-    
+        
+        [self loadTable];
+        
     }] resume];
-    NSLog(@"list Data from dict outside: %@",self.listData[1][@"name"]);
-    [arr addObject:@"Alain"];
-     NSLog(@"String outside block: %@",str1);
-    //[arr addObject:str1];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) loadTable
+{
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+    
+    
+    NSLog(@"inside load table");
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
+
+
+//TableView Methods***********************************
 
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    //return [[jsonSpecialsDict[@"specials"] allObjects] count];
     NSLog(@"inside number of rows");
     return (NSInteger)arr.count;
 }
 
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
+- (UITableViewCell *)tableView:(UITableView *)aTableView
           cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"inside cell method");
     
-    static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
+    static NSString *SimpleCellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             SimpleTableIdentifier];
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:
+                             SimpleCellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                  initWithStyle:UITableViewCellStyleDefault
-                 reuseIdentifier:SimpleTableIdentifier];
+                 reuseIdentifier:SimpleCellIdentifier];
     }
    
     NSUInteger row = [indexPath row];
     cell.textLabel.text = arr[row];
     
     
-//    cell.textLabel.font = [UIFont boldSystemFontOfSize:50];
-    
-//    NSDictionary *specialsDictionary = [listData objectAtIndex:indexPath.row];
-//    cell.textLabel.text = [specialsDictionary objectForKey:@"name"];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:35];
 
     return cell;
 }
-
-
-//- (NSInteger)tableView:(UITableView *)tableView
-//indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"inside indentation level");
-//    NSUInteger row = [indexPath row];
-//    return row;
-//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSLog(@"inside number of sections");
