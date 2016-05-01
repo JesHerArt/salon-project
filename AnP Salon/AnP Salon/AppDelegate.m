@@ -32,7 +32,7 @@
 //    // Override point for customization after application launch.
 //    //Alain
 //    //key to access google api for map integration
-//    
+//
 //    return YES;
 //}
 
@@ -41,21 +41,52 @@
                              didFinishLaunchingWithOptions:launchOptions];
     
     NSManagedObjectContext* context = [self managedObjectContext];
-    NSManagedObject* User = [NSEntityDescription insertNewObjectForEntityForName:@"User"inManagedObjectContext:context];
-    [User setValue: user.email  forKey: @"email"];
-    [User setValue: user.name   forKey: @"name"];
-    [User setValue: user.uId    forKey: @"uId"];
+    NSManagedObject* Colors = [NSEntityDescription insertNewObjectForEntityForName:@"Colors"inManagedObjectContext:context];
+    NSArray *colors = [[NSArray alloc] initWithObjects:@"red", @"yellow",@"blue", @"black", @"fuscia", @"pink",@"green", @"clear",@"white", @"purple", nil];
+    
+    
+    NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Colors"];
+    NSBatchDeleteRequest *delete = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
+    NSError *deleteError = nil;
+    [self.persistentStoreCoordinator executeRequest:delete withContext:context error:&deleteError];
+    
+    
+    for (int i = 0 ; i < colors.count ; i++)
+    {
+        NSManagedObject *tagsDB = [NSEntityDescription insertNewObjectForEntityForName:@"Colors" inManagedObjectContext:context];
+        [tagsDB setValue:colors[i] forKey:@"nailColor"];
+        
+    }
+    
+    [self saveContext];
+    
+    
+    //NSLog(@"colors array count %lu", colors.count);
     
     NSError* error;
     if(![context save:&error]) {
         NSLog(@"Save Failed");
     }
+    [context deleteObject:Colors];
     
-    NSFetchRequest* request = [[NSFetchRequest alloc] init];
-    NSEntityDescription* entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext: context];
+    
+    
+    [request setReturnsObjectsAsFaults:NO];
+    
+    
+    
+    
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Colors" inManagedObjectContext: context];
     [request setEntity:entity];
     NSArray* fetchedObjects = [context executeFetchRequest:request error: &error];
-    NSLog(@"here");
+    
+    
+    //NSLog(@"Fetched objs = %@", fetchedObjects);
+    
+    
+    
+    
+    
     
     // Add any custom logic here.
     [GMSServices provideAPIKey:@"AIzaSyDPEBON9xkaQWrrI8TT2PTgdXEKmFwMBJE"];
@@ -96,13 +127,16 @@
     if(user.name){
 #define ROOTVIEW [[[UIApplication sharedApplication] keyWindow] rootViewController]
         [ROOTVIEW presentViewController:vc animated:YES completion:nil];
-        NSLog(@"inside the if statement");
+        //NSLog(@"inside the if statement");
         
     }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    
+    
 }
 
 
@@ -137,7 +171,7 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;
@@ -150,7 +184,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"userModel" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Color" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -204,12 +238,6 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
-
-
-
-
-
-
 
 
 @end

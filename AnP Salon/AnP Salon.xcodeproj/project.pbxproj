@@ -18,10 +18,13 @@
 		A948082F1CAE33040024271F /* AnP_SalonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A948082E1CAE33040024271F /* AnP_SalonTests.m */; };
 		A948083A1CAE33040024271F /* AnP_SalonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A94808391CAE33040024271F /* AnP_SalonUITests.m */; };
 		BB0D36331CD67077009B5053 /* weathermap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB0D36321CD67077009B5053 /* weathermap.jpg */; };
+		BB0D36431CD68CB8009B5053 /* HairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D36421CD68CB8009B5053 /* HairViewController.m */; };
+		BB0D36461CD68CD1009B5053 /* NailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D36451CD68CD1009B5053 /* NailsViewController.m */; };
+		BB0D36491CD691D0009B5053 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D36481CD691D0009B5053 /* SecondViewController.m */; };
+		BB0D364C1CD6A3B4009B5053 /* Color.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB0D364A1CD6A3B4009B5053 /* Color.xcdatamodeld */; };
 		BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */; };
 		BB28706A1CCEBC1100CE8193 /* stockPhoto.gif in Resources */ = {isa = PBXBuildFile; fileRef = BB2870691CCEBC1100CE8193 /* stockPhoto.gif */; };
 		BB5B70A91CD519ED0092A155 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5B70A81CD519ED0092A155 /* CoreData.framework */; };
-		BB5B70AC1CD51BB60092A155 /* userModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB5B70AA1CD51BB60092A155 /* userModel.xcdatamodeld */; };
 		BB7909C71CD3C283003AD8AB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7909C61CD3C283003AD8AB /* User.m */; };
 		BBCDC6151CAEF93E00494AEA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6141CAEF93E00494AEA /* MapViewController.m */; };
 		BBCDC6181CAEFAB100494AEA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC6171CAEFAB100494AEA /* HomeViewController.m */; };
@@ -69,11 +72,17 @@
 		A94808391CAE33040024271F /* AnP_SalonUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnP_SalonUITests.m; sourceTree = "<group>"; };
 		A948083B1CAE33040024271F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB0D36321CD67077009B5053 /* weathermap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = weathermap.jpg; sourceTree = "<group>"; };
+		BB0D36411CD68CB8009B5053 /* HairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HairViewController.h; sourceTree = "<group>"; };
+		BB0D36421CD68CB8009B5053 /* HairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HairViewController.m; sourceTree = "<group>"; };
+		BB0D36441CD68CD1009B5053 /* NailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NailsViewController.h; sourceTree = "<group>"; };
+		BB0D36451CD68CD1009B5053 /* NailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NailsViewController.m; sourceTree = "<group>"; };
+		BB0D36471CD691D0009B5053 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		BB0D36481CD691D0009B5053 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		BB0D364B1CD6A3B4009B5053 /* Color.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Color.xcdatamodel; sourceTree = "<group>"; };
 		BB28561A1CCBE5D900F3F7A4 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		BB2870691CCEBC1100CE8193 /* stockPhoto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = stockPhoto.gif; sourceTree = "<group>"; };
 		BB5B70A81CD519ED0092A155 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		BB5B70AB1CD51BB60092A155 /* userModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = userModel.xcdatamodel; sourceTree = "<group>"; };
 		BB5B70AD1CD525260092A155 /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONSerializable.h; sourceTree = "<group>"; };
 		BB7909C51CD3C283003AD8AB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		BB7909C61CD3C283003AD8AB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -157,6 +166,12 @@
 				BBCDC61A1CAEFAC700494AEA /* ApptViewController.m */,
 				BBCDC61C1CAEFADA00494AEA /* ServicesViewController.h */,
 				BBCDC61D1CAEFADA00494AEA /* ServicesViewController.m */,
+				BB0D36471CD691D0009B5053 /* SecondViewController.h */,
+				BB0D36481CD691D0009B5053 /* SecondViewController.m */,
+				BB0D36411CD68CB8009B5053 /* HairViewController.h */,
+				BB0D36421CD68CB8009B5053 /* HairViewController.m */,
+				BB0D36441CD68CD1009B5053 /* NailsViewController.h */,
+				BB0D36451CD68CD1009B5053 /* NailsViewController.m */,
 				BBCDC6131CAEF93E00494AEA /* MapViewController.h */,
 				BBCDC6141CAEF93E00494AEA /* MapViewController.m */,
 				BBCED3511CCBDEAF00E6FCB1 /* CameraViewController.h */,
@@ -171,7 +186,7 @@
 				A94808221CAE33040024271F /* LaunchScreen.storyboard */,
 				A94808251CAE33040024271F /* Info.plist */,
 				A94808111CAE33040024271F /* Supporting Files */,
-				BB5B70AA1CD51BB60092A155 /* userModel.xcdatamodeld */,
+				BB0D364A1CD6A3B4009B5053 /* Color.xcdatamodeld */,
 			);
 			path = "AnP Salon";
 			sourceTree = "<group>";
@@ -407,14 +422,17 @@
 			files = (
 				BB7909C71CD3C283003AD8AB /* User.m in Sources */,
 				BBCDC61E1CAEFADA00494AEA /* ServicesViewController.m in Sources */,
+				BB0D36431CD68CB8009B5053 /* HairViewController.m in Sources */,
 				BBCED3531CCBDEAF00E6FCB1 /* CameraViewController.m in Sources */,
 				BBCDC61B1CAEFAC700494AEA /* ApptViewController.m in Sources */,
 				A94808161CAE33040024271F /* AppDelegate.m in Sources */,
 				BBCDC6151CAEF93E00494AEA /* MapViewController.m in Sources */,
 				BBCDC6211CAEFC7600494AEA /* LoginViewController.m in Sources */,
+				BB0D36461CD68CD1009B5053 /* NailsViewController.m in Sources */,
+				BB0D364C1CD6A3B4009B5053 /* Color.xcdatamodeld in Sources */,
 				BBCDC6181CAEFAB100494AEA /* HomeViewController.m in Sources */,
+				BB0D36491CD691D0009B5053 /* SecondViewController.m in Sources */,
 				A94808131CAE33040024271F /* main.m in Sources */,
-				BB5B70AC1CD51BB60092A155 /* userModel.xcdatamodeld in Sources */,
 				BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,13 +696,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		BB5B70AA1CD51BB60092A155 /* userModel.xcdatamodeld */ = {
+		BB0D364A1CD6A3B4009B5053 /* Color.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				BB5B70AB1CD51BB60092A155 /* userModel.xcdatamodel */,
+				BB0D364B1CD6A3B4009B5053 /* Color.xcdatamodel */,
 			);
-			currentVersion = BB5B70AB1CD51BB60092A155 /* userModel.xcdatamodel */;
-			path = userModel.xcdatamodeld;
+			currentVersion = BB0D364B1CD6A3B4009B5053 /* Color.xcdatamodel */;
+			path = Color.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

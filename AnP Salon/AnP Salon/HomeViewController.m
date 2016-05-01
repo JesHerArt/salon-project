@@ -29,7 +29,7 @@
     tableView.dataSource = self;
     arr = [[NSMutableArray alloc] initWithObjects:@"Week of MAY 1st - MAY 7th 2016", nil];
     [self setArrayFromRequest2];
-    NSLog(@"Array after init: %@", arr);
+    //NSLog(@"Array after init: %@", arr);
     
     
     //Alain
@@ -90,7 +90,7 @@
         self.listData = [jsonSpecialsDict objectForKey:@"specials"];
 
         
-        NSLog(@"list Data from list data array: %@",self.listData[1][@"name"]);
+        //NSLog(@"list Data from list data array: %@",self.listData[1][@"name"]);
         
         str1 = [NSString stringWithFormat:@"%@                                            %@", self.listData[0][@"name"], self.listData[0][@"special_price"] ];
         str2 = [NSString stringWithFormat:@"%@                                            %@", self.listData[1][@"name"], self.listData[1][@"special_price"] ];
@@ -121,7 +121,7 @@
     });
     
     
-    NSLog(@"inside load table");
+    //NSLog(@"inside load table");
 }
 
 
@@ -134,13 +134,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"inside number of rows");
+    //NSLog(@"inside number of rows");
     return (NSInteger)arr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView
           cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"inside cell method");
+    //NSLog(@"inside cell method");
     
     static NSString *SimpleCellIdentifier = @"Cell";
     
@@ -156,13 +156,13 @@
     cell.textLabel.text = arr[row];
     
     
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:35];
-
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:24];
+    
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"inside number of sections");
+    //NSLog(@"inside number of sections");
     return 1;
 }
 

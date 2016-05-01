@@ -7,24 +7,74 @@
 //
 
 #import "ServicesViewController.h"
+#import "HairViewController.h"
+#import "NailsViewController.h"
+#import "SecondViewController.h"
 
 @interface ServicesViewController ()
 
 @end
 
 @implementation ServicesViewController
-@synthesize tableView,listData;
 
 
 - (void)viewDidLoad {
+   /*
+    self.title = @"Services";
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    
+    // Hair Button
+    HairViewController *hairButtonController =
+    [[HairViewController alloc] initWithStyle:UITableViewStylePlain];
+    hairButtonController.title = @"Hair";
+    [array addObject:hairButtonController];
+    
+    // Nail Button
+    NailsViewController *nailsButtonController =
+    [[NailsViewController alloc] initWithStyle:UITableViewStylePlain];
+    nailsButtonController.title = @"Nails";
+    [array addObject:nailsButtonController];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.controllers = array;
+    */
+    
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+-(IBAction)HairClicked:(id)sender{
+    
+    //goes to hair controller
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HairViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
+    
+}
+
+-(IBAction)NailsClicked:(id)sender{
+    
+    //goes to nails controller
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"NailsViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+
+
+
+
 
 /*
 #pragma mark - Navigation
@@ -42,33 +92,32 @@
 
 //TableView Methods***********************************
 
-
+/*
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"inside number of rows");
-    return (NSInteger)arr.count;
+    //NSLog(@"inside number of rows");
+    NSLog(@"Number of controllers/table items: %lu", [self.controllers count]);
+    return [self.controllers count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)aTableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"inside cell method");
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *SimpleCellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:
-                             SimpleCellIdentifier];
+    static NSString *FirstLevelCell= @"FirstLevelCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FirstLevelCell];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:SimpleCellIdentifier];
+                reuseIdentifier:FirstLevelCell];
     }
-    
+
+    // Configure the cell
     NSUInteger row = [indexPath row];
-    cell.textLabel.text = arr[row];
-    
-    
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:35];
-    
+    SecondViewController *controller = [controllers objectAtIndex:row];
+    cell.textLabel.text = controller.title;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -76,5 +125,6 @@
     NSLog(@"inside number of sections");
     return 1;
 }
+ */
 
 @end

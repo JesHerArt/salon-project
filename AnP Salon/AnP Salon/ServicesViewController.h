@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ServicesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate, UINavigationControllerDelegate>
-{
-    NSMutableArray *listData;
-    NSDictionary *jsonServicesDict;
-    
-}
+@interface ServicesViewController : UIViewController
 
-@property IBOutlet UITableView * tableView;
-@property (nonatomic, retain) NSMutableArray *listData;
+
+@property (weak, nonatomic) UIButton *hairBtn;
+@property (weak, nonatomic) UIButton *nailsBtn;
+
+-(IBAction)HairClicked:(id)sender;
+-(IBAction)NailsClicked:(id)sender;
 
 @end
 

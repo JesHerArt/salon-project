@@ -70,8 +70,8 @@
          NSLog(@"%@", result);
          name = result[@"name"];
          email = result[@"email"];
-         NSLog(@"name: %@", name);
-         NSLog(@"email: %@", email);
+         //NSLog(@"name: %@", name);
+         //NSLog(@"email: %@", email);
          
          user = [User userData];
          
