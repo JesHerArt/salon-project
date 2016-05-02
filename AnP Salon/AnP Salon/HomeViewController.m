@@ -18,9 +18,10 @@
     User *user;
     NSMutableArray * arr;
     NSString *str1, *str2, *str3, *str4, *str5;
+    NSString *weatherStr, *icon;
     
 }
-@synthesize lbl,tableView, listData, weatherImg;
+@synthesize lbl,tableView, listData, webView, weatherData, txtView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +38,12 @@
     //NSLog(@"User name: %@",user.name);
     NSString *welcome = [NSString stringWithFormat:@"Welcome %@ we hope you are having a beautiful day!", user.name];
     lbl.text = welcome;
+    for(int x=0;x<user.appointments.count;x++){
+        lbl.text = [lbl.text stringByAppendingString:[NSString stringWithFormat:@"\r %@",user.appointments[x]]];
+    }
+    
+    
+    
     
     //Alain post to external DB name and email
     NSDictionary *dict = @{@"name" : user.name ,
@@ -57,7 +64,9 @@
     user.uId = jsonDict[@"user_id"];
             //NSLog(@"%@",user.uId);
     }] resume];
-    //post user to ext DB
+    //get weather
+    
+    [self getWeather];
     
 }
 
@@ -122,6 +131,47 @@
     
     
     //NSLog(@"inside load table");
+}
+
+-(void)getWeather{
+    
+    
+    NSURL * url = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather?q=Miami&appid=6654780bba568f4c9e3543dead58391e"];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        
+        self.weatherData = [jsonDict objectForKey:@"weather"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            
+            weatherStr = [NSString stringWithFormat:@"Current Weather for Miami: \r%@  \rDescription: \r%@", self.weatherData[0][@"main"], self.weatherData[0][@"description"] ];
+            icon = [NSString stringWithFormat:@"%@",self.weatherData[0][@"icon"]];
+            self.txtView.text = weatherStr;
+            NSString *iconStr = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@.png",icon];
+            NSURL * url2 = [NSURL URLWithString:iconStr];
+            NSURLRequest *request2 = [NSURLRequest requestWithURL:url2];
+            [webView loadRequest:request2];
+
+            
+        });
+    }] resume];
+    
+    
+    
+    
+    
+    
 }
 
 

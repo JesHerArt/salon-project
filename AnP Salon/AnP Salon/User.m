@@ -17,10 +17,13 @@
     static User * userData = nil;
     if(!userData){
         userData = [[User alloc]init];
+        userData.appointments = [[NSMutableArray alloc]init];
     }
     return userData;
     
 }
+
+
 
 
 
