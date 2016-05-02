@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-@interface NailsViewController : UIViewController
+@interface NailsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) UIButton *backBtn;
-@property (weak, nonatomic) NSMutableArray * colorsArray;
+@property NSMutableArray * colorsArray;
+@property IBOutlet UITableView * tableView;
+@property IBOutlet UISearchBar * searchBar;
+
 
 -(IBAction)BackClicked:(id)sender;
 

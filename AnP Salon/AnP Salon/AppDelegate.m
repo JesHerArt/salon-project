@@ -42,7 +42,8 @@
     
     NSManagedObjectContext* context = [self managedObjectContext];
     NSManagedObject* Colors = [NSEntityDescription insertNewObjectForEntityForName:@"Colors"inManagedObjectContext:context];
-    NSArray *colors = [[NSArray alloc] initWithObjects:@"red", @"yellow",@"blue", @"black", @"fuscia", @"pink",@"green", @"clear",@"white", @"purple", nil];
+    NSArray *colors = [[NSArray alloc] initWithObjects:@"Red", @"Yellow",@"Blue", @"Black", @"Fuscia", @"Pink",@"Green", @"Clear",@"White", @"Purple",@"Cyan", @"Magenta",@"Grey",
+                       @"Orange",@"Violet", @"Amber", @"Beige", @"Brick Red",@"Canary",@"Cafe",@"Chestnut",@"Cobalt",@"Ebony",@"EggPlant",@"Emerald",@"Flirt", @"Blueberry",@"Sonic Blue", @"Kirby Pink", @"Pikachu Yellow", @"Charmander Orange",@"Squirtle Aqua", @"Ginger",@"Panda", @"French Fuzz",@"Iris", nil];
     
     
     NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Colors"];
