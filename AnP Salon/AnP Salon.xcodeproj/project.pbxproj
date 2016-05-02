@@ -20,7 +20,6 @@
 		BB0D36331CD67077009B5053 /* weathermap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB0D36321CD67077009B5053 /* weathermap.jpg */; };
 		BB0D36431CD68CB8009B5053 /* HairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D36421CD68CB8009B5053 /* HairViewController.m */; };
 		BB0D36461CD68CD1009B5053 /* NailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D36451CD68CD1009B5053 /* NailsViewController.m */; };
-		BB0D36491CD691D0009B5053 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0D36481CD691D0009B5053 /* SecondViewController.m */; };
 		BB0D364C1CD6A3B4009B5053 /* Color.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB0D364A1CD6A3B4009B5053 /* Color.xcdatamodeld */; };
 		BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */; };
 		BB28706A1CCEBC1100CE8193 /* stockPhoto.gif in Resources */ = {isa = PBXBuildFile; fileRef = BB2870691CCEBC1100CE8193 /* stockPhoto.gif */; };
@@ -76,8 +75,6 @@
 		BB0D36421CD68CB8009B5053 /* HairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HairViewController.m; sourceTree = "<group>"; };
 		BB0D36441CD68CD1009B5053 /* NailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NailsViewController.h; sourceTree = "<group>"; };
 		BB0D36451CD68CD1009B5053 /* NailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NailsViewController.m; sourceTree = "<group>"; };
-		BB0D36471CD691D0009B5053 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		BB0D36481CD691D0009B5053 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		BB0D364B1CD6A3B4009B5053 /* Color.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Color.xcdatamodel; sourceTree = "<group>"; };
 		BB28561A1CCBE5D900F3F7A4 /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		BB28561B1CCBE5D900F3F7A4 /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
@@ -166,8 +163,6 @@
 				BBCDC61A1CAEFAC700494AEA /* ApptViewController.m */,
 				BBCDC61C1CAEFADA00494AEA /* ServicesViewController.h */,
 				BBCDC61D1CAEFADA00494AEA /* ServicesViewController.m */,
-				BB0D36471CD691D0009B5053 /* SecondViewController.h */,
-				BB0D36481CD691D0009B5053 /* SecondViewController.m */,
 				BB0D36411CD68CB8009B5053 /* HairViewController.h */,
 				BB0D36421CD68CB8009B5053 /* HairViewController.m */,
 				BB0D36441CD68CD1009B5053 /* NailsViewController.h */,
@@ -431,7 +426,6 @@
 				BB0D36461CD68CD1009B5053 /* NailsViewController.m in Sources */,
 				BB0D364C1CD6A3B4009B5053 /* Color.xcdatamodeld in Sources */,
 				BBCDC6181CAEFAB100494AEA /* HomeViewController.m in Sources */,
-				BB0D36491CD691D0009B5053 /* SecondViewController.m in Sources */,
 				A94808131CAE33040024271F /* main.m in Sources */,
 				BB28561C1CCBE5D900F3F7A4 /* ReviewViewController.m in Sources */,
 			);

@@ -77,10 +77,10 @@
     
     
     
-    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Colors" inManagedObjectContext: context];
-    [request setEntity:entity];
-    NSArray* fetchedObjects = [context executeFetchRequest:request error: &error];
-    
+//    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Colors" inManagedObjectContext: context];
+//    [request setEntity:entity];
+//    NSArray* fetchedObjects = [context executeFetchRequest:request error: &error];
+//    
     
     //NSLog(@"Fetched objs = %@", fetchedObjects);
     

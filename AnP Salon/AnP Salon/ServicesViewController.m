@@ -9,7 +9,6 @@
 #import "ServicesViewController.h"
 #import "HairViewController.h"
 #import "NailsViewController.h"
-#import "SecondViewController.h"
 
 @interface ServicesViewController ()
 
