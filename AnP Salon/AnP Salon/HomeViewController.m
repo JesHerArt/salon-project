@@ -24,6 +24,9 @@
 }
 @synthesize lbl,tableView, listData, webView, weatherData, txtView, appointmentsArray;
 
+//When view loads, it displays a welcome message to the user (Knows who the user is from the Facebook Login)
+//Fetches CoreData appointment objects and adds them to the Home View under the welcome message
+//Posts user data into external database
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -31,8 +34,7 @@
     tableView.dataSource = self;
     arr = [[NSMutableArray alloc] initWithObjects:@"Week of MAY 1st - MAY 7th 2016", nil];
     [self setArrayFromRequest2];
-    
-    //Alain
+
     user = [User userData];
     NSString *welcome = [NSString stringWithFormat:@"Welcome %@, we hope you are having a beautiful day!\r", user.name];
     lbl.text = welcome;
@@ -60,7 +62,6 @@
         }
         
     }
-    
     
     //Alain post to external DB name and email
     NSDictionary *dict = @{@"name" : user.name ,

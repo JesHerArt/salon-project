@@ -17,6 +17,8 @@
 
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSString *email;
-
+@property IBOutlet UIImageView *imgView;
+@property IBOutlet UILabel *lblTxt;
+@property IBOutlet UILabel *lblTxt2;
 
 @end

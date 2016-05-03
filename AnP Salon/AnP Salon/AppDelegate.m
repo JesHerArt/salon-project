@@ -27,15 +27,8 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
-
-//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    // Override point for customization after application launch.
-//    //Alain
-//    //key to access google api for map integration
-//
-//    return YES;
-//}
-
+//When Application finishes launching, it will create an array of nail colors, and add them to CoreData
+//Activates Facebook framework
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
@@ -74,25 +67,12 @@
     
     [request setReturnsObjectsAsFaults:NO];
     
-    
-    
-    
-//    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Colors" inManagedObjectContext: context];
-//    [request setEntity:entity];
-//    NSArray* fetchedObjects = [context executeFetchRequest:request error: &error];
-//    
-    
-    //NSLog(@"Fetched objs = %@", fetchedObjects);
-    
-    
-    
-    
-    
-    
     // Add any custom logic here.
     [GMSServices provideAPIKey:@"AIzaSyDPEBON9xkaQWrrI8TT2PTgdXEKmFwMBJE"];
     return YES;
 }
+
+
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
@@ -103,6 +83,7 @@
     // Add any custom logic here.
     return handled;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -117,6 +98,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
+
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
