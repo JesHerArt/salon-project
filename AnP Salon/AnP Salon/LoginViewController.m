@@ -40,24 +40,23 @@
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
     [loginManager logOut];
     
-         [viewLoginFB addSubview:loginButton];
+    [viewLoginFB addSubview:loginButton];
     
     
-   NSLog(@"Token load: %@", [FBSDKAccessToken currentAccessToken]);
-
+   //NSLog(@"Token load: %@", [FBSDKAccessToken currentAccessToken]);
     
 }
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
 
 -(void)viewWillAppear:(BOOL)animated{
 
-    
     [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     
      NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
@@ -66,7 +65,7 @@
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
                                   id result, NSError *error) {
-         //         aHandler(result, error);
+
          NSLog(@"%@", result);
          name = result[@"name"];
          email = result[@"email"];
@@ -74,60 +73,25 @@
          //NSLog(@"email: %@", email);
          
          user = [User userData];
-         
          [user setName:name];
          [user setEmail:email];
          
-         
      }];
+    
      NSLog(@"Token appear: %@", [FBSDKAccessToken currentAccessToken]);
     
     [self login];
     
 }
 
--(void)login{
 
+
+-(void)login{
     
     if(!user.name){
                 
         [self presentViewController:vc animated:YES completion:nil];
     }
-}
-
-
-
-
--(IBAction)LoginClicked:(id)sender{
-    
-//    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
-//    
-////    if(FBSDKAccessToken.currentAccessToken != nil) {
-////        NSLog((@"%@", FBSDKAccessToken.currentAccessToken.userID)); //works
-////    }
-//    
-//    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-//    [parameters setValue:@"id,name,email" forKey:@"fields"];
-//    
-//    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters]
-//     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
-//                                  id result, NSError *error) {
-////         aHandler(result, error);
-//         NSLog(@"%@", result);
-//         name = result[@"name"];
-//         email = result[@"email"];
-//         NSLog(@"name: %@", name);
-//         NSLog(@"email: %@", email);
-//         
-//          user = [User userData];
-//        
-//         [user setName:name];
-//         [user setEmail:email];
-//         [self presentViewController:vc animated:YES completion:nil];
-//         
-//     }];
-    
-    
 }
 
 

@@ -24,22 +24,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Do any additional setup after loading the view.
+
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+
+
 -(IBAction)makeApptClicked:(id)sender{
-    
    
     NSDate * selected = [datePicker date];
     NSString * hair = @"Hair Appointment";
     NSString * nail = @"Nail Appointment";
-    
     
     if(appSwitch.isOn){
         
@@ -47,7 +47,6 @@
     }else{
         appType = hair;
     }
-    
     
     //add appt event to calendar
     EKEventStore *eventStore = [[EKEventStore alloc] init];
@@ -117,8 +116,6 @@
     [self presentViewController:vc animated:YES completion:nil];
     
 }
-
-
 
 
 @end

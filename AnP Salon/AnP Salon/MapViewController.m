@@ -20,11 +20,14 @@
 @end
 
 @implementation MapViewController
+
 @synthesize webView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
+
+
 
 -(void)viewDidAppear:(BOOL)animated{
     //pre loads business id for salon
@@ -46,22 +49,23 @@
         //loads view with business info from api data
         NSURLRequest *request = [NSURLRequest requestWithURL:urlSalon];
         [webView loadRequest:request];
-        
-        
     }];
     
     user = [User userData];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
+
 -(IBAction)ReviewClicked:(id)sender{
     
     //goes to review controller
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ReviewViewController"];
     [self presentViewController:viewController animated:YES completion:nil];
@@ -71,7 +75,6 @@
 -(IBAction)CameraClicked:(id)sender{
     
     //goes to camera controller
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
     [self presentViewController:viewController animated:YES completion:nil];

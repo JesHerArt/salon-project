@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITextView * nameView;
 @property (weak, nonatomic) IBOutlet UITextView * priceView;
 @property NSMutableArray *listData;
-
 @property (weak, nonatomic) UIButton *backBtn;
 
 -(IBAction)BackClicked:(id)sender;

@@ -13,8 +13,7 @@
 
 
 - (void) viewDidLoad {
-    
-    
+
     [super viewDidLoad];
     
     NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/services/hairstyles"];
@@ -52,7 +51,6 @@
 -(IBAction)BackClicked:(id)sender{
     
     //goes back to services controller
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     [vc setSelectedIndex:1];

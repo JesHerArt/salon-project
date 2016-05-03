@@ -18,9 +18,8 @@
 @implementation ReviewViewController
 {
     User *user;
-    
-    
 }
+
 @synthesize reviewTxt,cancelBtn,sendBtn, slider, txtView, listData;
 
 
@@ -54,11 +53,15 @@
     
 }
 
+
+
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
-    
     [textField resignFirstResponder];
     return YES;
 }
+
+
+
 - (BOOL)textView:(UITextView *)textView
 shouldChangeTextInRange:(NSRange)range
  replacementText:(NSString *)text
@@ -70,6 +73,8 @@ shouldChangeTextInRange:(NSRange)range
     return YES;
 }
 
+
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [reviewTxt resignFirstResponder];
 }
@@ -79,6 +84,7 @@ shouldChangeTextInRange:(NSRange)range
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(IBAction)CancelClicked:(id)sender{
     
@@ -90,6 +96,8 @@ shouldChangeTextInRange:(NSRange)range
     
     [self presentViewController:vc animated:YES completion:nil];
 }
+
+
 
 //post review to DB
 -(IBAction)SendClicked:(id)sender{
