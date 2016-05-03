@@ -8,6 +8,7 @@
 
 #import "ApptViewController.h"
 #import "User.h"
+#import "AppDelegate.h"
 
 @interface ApptViewController ()
 
@@ -86,6 +87,28 @@
     NSString *str2 = [str1 substringToIndex:10];
     NSString * appointmentInfo = [NSString stringWithFormat:@"You have a %@ on: %@",appType, str2];
     [user.appointments addObject:appointmentInfo];
+    
+    
+    //adding the appointment to core data
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext* context = [appDelegate managedObjectContext];
+    //NSEntityDescription* entity = [NSEntityDescription entityForName:@"Appointments" inManagedObjectContext: context];
+    //NSManagedObject* Appointments = [NSEntityDescription insertNewObjectForEntityForName:@"Appointments"inManagedObjectContext:context];
+    NSArray *appts = [[NSArray alloc] initWithObjects:appointmentInfo, nil];
+    
+    NSLog(@"Appts Array: %@", appts);
+    
+    for (int i = 0 ; i < appts.count ; i++)
+    {
+        NSManagedObject *tagsDB = [NSEntityDescription insertNewObjectForEntityForName:@"Appointments" inManagedObjectContext:context];
+        [tagsDB setValue:appts[i] forKey:@"appts"];
+        
+        NSLog(@"Inside for loop: %@", tagsDB);
+    }
+    
+    [appDelegate saveContext];
+    
+    NSLog(@"After app delegate save context");
     
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

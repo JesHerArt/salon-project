@@ -18,6 +18,7 @@
 }
 
 
+@property NSMutableArray *appointmentsArray;
 @property IBOutlet UILabel *lbl;
 @property IBOutlet UIWebView *webView;
 @property IBOutlet UITextView * txtView;

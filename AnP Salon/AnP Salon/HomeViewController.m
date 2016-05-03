@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "User.h"
+#import "AppDelegate.h"
 
 @interface HomeViewController ()
 
@@ -21,7 +22,7 @@
     NSString *weatherStr, *icon;
     
 }
-@synthesize lbl,tableView, listData, webView, weatherData, txtView;
+@synthesize lbl,tableView, listData, webView, weatherData, txtView, appointmentsArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,12 +37,35 @@
     //Alain
     user = [User userData];
     //NSLog(@"User name: %@",user.name);
-    NSString *welcome = [NSString stringWithFormat:@"Welcome %@ we hope you are having a beautiful day!", user.name];
+    NSString *welcome = [NSString stringWithFormat:@"Welcome %@, we hope you are having a beautiful day!\r", user.name];
     lbl.text = welcome;
-    for(int x=0;x<user.appointments.count;x++){
-        lbl.text = [lbl.text stringByAppendingString:[NSString stringWithFormat:@"\r %@",user.appointments[x]]];
-    }
     
+    
+    
+    
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext* context = [appDelegate managedObjectContext];
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Appointments" inManagedObjectContext: context];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Appointments"];
+    [fetchRequest setEntity:entity];
+    
+    NSArray* fetchedObjects = [context executeFetchRequest:fetchRequest error: nil];
+    appointmentsArray = [[NSMutableArray alloc]init];
+    
+    if (fetchedObjects.count > 0 ) {
+        
+        for(int j = 0;j < fetchedObjects.count;j++){
+            NSManagedObject *mo = [fetchedObjects objectAtIndex:j];  // assuming that array is not empty
+            id value = [mo valueForKey:@"appts"];
+            [appointmentsArray addObject:value];
+        }
+        
+        for(int x=0;x<appointmentsArray.count;x++){
+            lbl.text = [lbl.text stringByAppendingString:[NSString stringWithFormat:@"\r%@",appointmentsArray[x]]];
+        }
+        
+    }
     
     
     

@@ -42,6 +42,8 @@
        // textView.text = [textView.text stringByAppendingString:value];
        // textView.text = [textView.text stringByAppendingString:@"\r\r"];
     }
+    
+    
     searchColors = [[NSMutableArray alloc]initWithArray:colorsArray];
     
 }

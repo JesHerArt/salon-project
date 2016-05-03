@@ -70,6 +70,10 @@ shouldChangeTextInRange:(NSRange)range
     return YES;
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [reviewTxt resignFirstResponder];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
