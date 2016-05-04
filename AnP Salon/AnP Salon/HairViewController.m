@@ -16,6 +16,8 @@
 
     [super viewDidLoad];
     
+    //call to external DB for hairstyles
+    
     NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/services/hairstyles"];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];

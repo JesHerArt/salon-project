@@ -23,14 +23,14 @@
     tableView.delegate = self;
     searchBar.delegate = self;
     
+    //pull colors from coredata
+    
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     NSManagedObjectContext* context = [appDelegate managedObjectContext];
     NSEntityDescription* entity = [NSEntityDescription entityForName:@"Colors" inManagedObjectContext: context];
     NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:@"Colors"];
     [request setEntity:entity];
-    
-
     
     NSArray* fetchedObjects = [context executeFetchRequest:request error: nil];
     colorsArray = [[NSMutableArray alloc]init];
@@ -39,14 +39,14 @@
     NSManagedObject *mo = [fetchedObjects objectAtIndex:j];  // assuming that array is not empty
         id value = [mo valueForKey:@"nailColor"];
         [colorsArray addObject:value];
-       // textView.text = [textView.text stringByAppendingString:value];
-       // textView.text = [textView.text stringByAppendingString:@"\r\r"];
+      
     }
-    
     
     searchColors = [[NSMutableArray alloc]initWithArray:colorsArray];
     
 }
+
+//implementing search
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if([searchText length]== 0){
@@ -65,15 +65,19 @@
     [tableView reloadData];
     
 }
+
+//dismiss keyboard on tableview touch
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [searchBar resignFirstResponder];
 
 }
 
+//dismiss keyboard on search button click
 -(void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar{
     [searchBar resignFirstResponder];
 }
 
+//dismiss keyboard on screen touches
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [searchBar resignFirstResponder];
 }
@@ -88,7 +92,7 @@
     [self presentViewController:vc animated:YES completion:nil];}
 
 
-//tableView methods
+//tableView methods *****************************
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
@@ -118,7 +122,6 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    //NSLog(@"inside number of sections");
     return 1;
 }
 

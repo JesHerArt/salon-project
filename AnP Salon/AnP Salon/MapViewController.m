@@ -46,10 +46,16 @@
         marker.snippet = place.formattedAddress;
         urlSalon = place.website;
         
-        //loads view with business info from api data
-        NSURLRequest *request = [NSURLRequest requestWithURL:urlSalon];
-        [webView loadRequest:request];
-    }];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //loads view with business info from api data
+            NSURLRequest *request = [NSURLRequest requestWithURL:urlSalon];
+            [webView loadRequest:request];
+            
+            
+        });
+     }];
     
     user = [User userData];
 }

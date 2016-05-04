@@ -125,13 +125,11 @@
     
     blobStr = [self encodeToBase64String:image];
     
-    NSLog(@"Image sent to DB");
-    //NSLog(@"Image Blob: %@", blobStr);
+   //creates user singleton
     user = [User userData];
     user.imgStr = blobStr;
     
-    NSLog(@"user name: %@", user.name);
-    NSLog(@"user email: %@", user.email);
+    //post to external DB
     
     NSDictionary *dict = @{@"photo" : user.imgStr,
                            @"user_id" : user.uId};
@@ -155,7 +153,7 @@
         
     }] resume];
     
-    
+    //return to mapview after posting
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     [vc setSelectedIndex:3];
@@ -181,14 +179,14 @@
     
 }
 
-//Encode base64
+//Encode image base64
 
 - (NSString *)encodeToBase64String:(UIImage *)img {
     
     return [UIImageJPEGRepresentation(img,0.0) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 }
 
-//Decode
+//Decode image from base64
 - (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
     NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
     return [UIImage imageWithData:data];

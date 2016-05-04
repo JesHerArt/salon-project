@@ -34,6 +34,8 @@
     lblTxt.attributedText = [[NSAttributedString alloc] initWithString:@"A & P" attributes:@{ NSStrokeColorAttributeName : [UIColor blackColor], NSForegroundColorAttributeName : [UIColor whiteColor], NSStrokeWidthAttributeName : @-1.0 }];
     lblTxt2.attributedText = [[NSAttributedString alloc] initWithString:@"Beauty Salon" attributes:@{ NSStrokeColorAttributeName : [UIColor blackColor], NSForegroundColorAttributeName : [UIColor whiteColor], NSStrokeWidthAttributeName : @-1.0 }];
     
+    //image array for animated login screen
+    
     NSArray *imageNames = @[@"pics/tmp-0.gif", @"pics/tmp-1.gif", @"pics/tmp-2.gif", @"pics/tmp-3.gif", @"pics/tmp-4.gif", @"pics/tmp-5.gif", @"pics/tmp-6.gif", @"pics/tmp-7.gif", @"pics/tmp-8.gif", @"pics/tmp-9.gif", @"pics/tmp-10.gif", @"pics/tmp-11.gif", @"pics/tmp-12.gif"
                             , @"pics/tmp-13.gif", @"pics/tmp-14.gif", @"pics/tmp-15.gif", @"pics/tmp-16.gif", @"pics/tmp-17.gif", @"pics/tmp-18.gif", @"pics/tmp-19.gif", @"pics/tmp-20.gif", @"pics/tmp-21.gif", @"pics/tmp-22.gif", @"pics/tmp-23.gif", @"pics/tmp-24.gif", @"pics/tmp-25.gif"
                             , @"pics/tmp-26.gif", @"pics/tmp-27.gif", @"pics/tmp-28.gif", @"pics/tmp-29.gif", @"pics/tmp-30.gif", @"pics/tmp-31.gif", @"pics/tmp-32.gif", @"pics/tmp-33.gif", @"pics/tmp-34.gif", @"pics/tmp-35.gif", @"pics/tmp-36.gif", @"pics/tmp-37.gif", @"pics/tmp-38.gif"
@@ -64,6 +66,8 @@
     
     [self.view insertSubview:imgView belowSubview:viewLoginFB];
     [imgView startAnimating];
+    
+    //adds FB login button
     
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     // Optional: Place the button in the center of your view.
@@ -99,15 +103,16 @@
      NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"id,name,email" forKey:@"fields"];
     
+    //pull full name and email from FB and set user object's attributes
+    
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
                                   id result, NSError *error) {
 
-         NSLog(@"%@", result);
+         
          name = result[@"name"];
          email = result[@"email"];
-         //NSLog(@"name: %@", name);
-         //NSLog(@"email: %@", email);
+        
          
          user = [User userData];
          [user setName:name];
@@ -115,7 +120,7 @@
          
      }];
     
-     NSLog(@"Token appear: %@", [FBSDKAccessToken currentAccessToken]);
+     
     
     [self login];
     

@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Pull reviewa from exernal DB
     NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/salon/reviews"];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -42,6 +42,7 @@
        
         self.listData = [jsonDict objectForKey:@"reviews"];
         
+        //return to main thread for listing reviews on text view
         dispatch_async(dispatch_get_main_queue(), ^{
             
             for(int x=0; x<listData.count; x++){
@@ -54,14 +55,14 @@
 }
 
 
-
+//dismiss keyboard on pressing return button
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
 }
 
 
-
+//dismiss keyboard
 - (BOOL)textView:(UITextView *)textView
 shouldChangeTextInRange:(NSRange)range
  replacementText:(NSString *)text
@@ -73,7 +74,7 @@ shouldChangeTextInRange:(NSRange)range
     return YES;
 }
 
-
+//dismiss keyboard
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [reviewTxt resignFirstResponder];
@@ -111,9 +112,6 @@ shouldChangeTextInRange:(NSRange)range
     UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     [vc setSelectedIndex:3];
     
-    //test ID
-    //user.uId = [NSNumber numberWithInt:9];
-
     
     NSDictionary *dict = @{@"user_id" : user.uId ,
                            @"comment" : user.review ,
@@ -136,8 +134,7 @@ shouldChangeTextInRange:(NSRange)range
         
     }] resume];
     
-//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-//    [connection start];
+
     
     [self presentViewController:vc animated:YES completion:nil];
 }

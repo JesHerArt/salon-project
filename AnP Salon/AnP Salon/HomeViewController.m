@@ -35,9 +35,12 @@
     arr = [[NSMutableArray alloc] initWithObjects:@"Week of MAY 1st - MAY 7th 2016", nil];
     [self setArrayFromRequest2];
 
+    //loads welcome string with user's name
     user = [User userData];
     NSString *welcome = [NSString stringWithFormat:@"Welcome %@, we hope you are having a beautiful day!\r", user.name];
     lbl.text = welcome;
+    
+    //CoreData read for appointments
     
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
@@ -63,7 +66,7 @@
         
     }
     
-    //Alain post to external DB name and email
+    //Post to external DB name and email
     NSDictionary *dict = @{@"name" : user.name ,
                            @"email" : user.email };
     NSData * jsonU = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
@@ -82,7 +85,7 @@
     user.uId = jsonDict[@"user_id"];
     }] resume];
     
-    //get weather
+    //get weather from api
     [self getWeather];
     
 }
@@ -93,6 +96,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+//pull from external DB .... Weekly Specials
 
 -(void)setArrayFromRequest2{
     
@@ -130,7 +135,7 @@
     
 }
 
-
+//reload tableview from main thread
 
 - (void) loadTable
 {
@@ -142,10 +147,10 @@
 }
 
 
-
+//weather api call
 -(void)getWeather{
     
-    NSURL * url = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather?q=Miami&appid=6654780bba568f4c9e3543dead58391e"];
+    NSURL * url = [NSURL URLWithString:@"http://api.openweathermap.org/data/2.5/weather?q=33174&appid=6654780bba568f4c9e3543dead58391e"];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:url];
@@ -163,7 +168,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            weatherStr = [NSString stringWithFormat:@"Current Weather for Miami: \r%@  \rDescription: \r%@", self.weatherData[0][@"main"], self.weatherData[0][@"description"] ];
+            weatherStr = [NSString stringWithFormat:@"Current Weather near AnP Salon: \r%@  \rDescription: \r%@", self.weatherData[0][@"main"], self.weatherData[0][@"description"] ];
             icon = [NSString stringWithFormat:@"%@",self.weatherData[0][@"icon"]];
             self.txtView.text = weatherStr;
             NSString *iconStr = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@.png",icon];
@@ -202,8 +207,6 @@
    
     NSUInteger row = [indexPath row];
     cell.textLabel.text = arr[row];
-    
-    
     cell.textLabel.font = [UIFont boldSystemFontOfSize:24];
     
     return cell;

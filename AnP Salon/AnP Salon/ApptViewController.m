@@ -51,18 +51,23 @@
     //add appt event to calendar
     EKEventStore *eventStore = [[EKEventStore alloc] init];
     
+    
+    // check if selector available
     if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)])
     {
-        // the selector is available, so we must be on iOS 6 or newer
+        
         [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (error)
                 {
                     // display error message here
+                    //would add to final product
                 }
                 else if (!granted)
                 {
                     // display access denied error message here
+                    //would add to final product
+
                 }
                 else
                 {
@@ -81,6 +86,7 @@
         }];
     }
     
+    //add appointent to user object
     User *user = [User userData];
     NSString * str1 = [NSString stringWithFormat:@"%@",selected];
     NSString *str2 = [str1 substringToIndex:10];
@@ -95,20 +101,17 @@
     //NSManagedObject* Appointments = [NSEntityDescription insertNewObjectForEntityForName:@"Appointments"inManagedObjectContext:context];
     NSArray *appts = [[NSArray alloc] initWithObjects:appointmentInfo, nil];
     
-    NSLog(@"Appts Array: %@", appts);
+    
     
     for (int i = 0 ; i < appts.count ; i++)
     {
         NSManagedObject *tagsDB = [NSEntityDescription insertNewObjectForEntityForName:@"Appointments" inManagedObjectContext:context];
         [tagsDB setValue:appts[i] forKey:@"appts"];
         
-        NSLog(@"Inside for loop: %@", tagsDB);
+        
     }
     
     [appDelegate saveContext];
-    
-    NSLog(@"After app delegate save context");
-    
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController*vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];

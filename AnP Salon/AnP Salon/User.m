@@ -12,6 +12,8 @@
 
 @synthesize name,email,imgStr,review, rating, appointments,uId;
 
+//singleton USER
+
 
 +(instancetype)userData{
     static User * userData = nil;
@@ -23,6 +25,12 @@
     
 }
 
+-(instancetype)init{
+    self = [super init];
+    
+    return self;
+    
+}
 
 
 
