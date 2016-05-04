@@ -15,7 +15,7 @@
 {
     NSString *placeID;
     NSURL* urlSalon;
-    User * user;
+    
 }
 @end
 
@@ -57,7 +57,7 @@
         });
      }];
     
-    user = [User userData];
+    
 }
 
 

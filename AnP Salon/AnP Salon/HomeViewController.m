@@ -168,7 +168,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            weatherStr = [NSString stringWithFormat:@"Current Weather near AnP Salon: \r%@  \rDescription: \r%@", self.weatherData[0][@"main"], self.weatherData[0][@"description"] ];
+            weatherStr = [NSString stringWithFormat:@"Current Weather near AnP Salon: \r%@  \r\rDescription: \r%@", self.weatherData[0][@"main"], self.weatherData[0][@"description"] ];
             icon = [NSString stringWithFormat:@"%@",self.weatherData[0][@"icon"]];
             self.txtView.text = weatherStr;
             NSString *iconStr = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@.png",icon];
@@ -178,6 +178,7 @@
 
             
         });
+        
     }] resume];
     
 }

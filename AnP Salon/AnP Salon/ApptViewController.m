@@ -17,6 +17,7 @@
 @implementation ApptViewController
 {
     NSString * appType;
+    User *user;
 }
 
 @synthesize appSwitch,datePicker;
@@ -87,7 +88,7 @@
     }
     
     //add appointent to user object
-    User *user = [User userData];
+    user = [User userData];
     NSString * str1 = [NSString stringWithFormat:@"%@",selected];
     NSString *str2 = [str1 substringToIndex:10];
     NSString * appointmentInfo = [NSString stringWithFormat:@"You have a %@ on: %@",appType, str2];
