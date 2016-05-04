@@ -18,7 +18,7 @@
     User *user;
 }
 
-@synthesize imageView, image, blobStr;
+@synthesize imageView, image, blobStr, reviewTxt, slider;
 
 
 - (void)viewDidLoad {
@@ -123,42 +123,53 @@
     
     //****save image into DB *******
     
-    blobStr = [self encodeToBase64String:image];
-    
-   //creates user singleton
-    user = [User userData];
-    user.imgStr = blobStr;
-    
-    //post to external DB
-    
-    NSDictionary *dict = @{@"photo" : user.imgStr,
-                           @"user_id" : user.uId};
-    
-    NSData * jsonC = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
-    
-    NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/salon/review"];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPBody:jsonC];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        NSLog(@"requestReply: %@", requestReply);
-       
+    if (image != NULL) {
         
-    }] resume];
+        
+        blobStr = [self encodeToBase64String:image];
+        
+        //creates user singleton
+        user = [User userData];
+        user.imgStr = blobStr;
+        user.review = reviewTxt.text;
+        user.rating = [NSNumber numberWithFloat:slider.value];
+        
+        //post to external DB
+        
+        NSDictionary *dict = @{@"photo" : user.imgStr,
+                               @"user_id" : user.uId ,
+                               @"comment" : user.review ,
+                               @"rating"  : user.rating};
+        
+        NSData * jsonC = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+        
+        NSURL * url = [NSURL URLWithString:@"http://salonapi.jesherart.design/salon/review"];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:url];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setHTTPBody:jsonC];
+        
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"requestReply: %@", requestReply);
+            
+            
+        }] resume];
+        
+        //return to mapview after posting
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
+        [vc setSelectedIndex:3];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        
+        
+    }
     
-    //return to mapview after posting
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
-    [vc setSelectedIndex:3];
-    
-    [self presentViewController:vc animated:YES completion:nil];
     
     
 }
@@ -190,6 +201,31 @@
 - (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
     NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
     return [UIImage imageWithData:data];
+}
+
+//dismiss keyboard on pressing return button
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+//dismiss keyboard
+- (BOOL)textView:(UITextView *)textView
+shouldChangeTextInRange:(NSRange)range
+ replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"])
+    {
+        [textView resignFirstResponder];
+    }
+    return YES;
+}
+
+//dismiss keyboard
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [reviewTxt resignFirstResponder];
 }
 
 
